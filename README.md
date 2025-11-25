@@ -384,7 +384,7 @@ A configuração da API key varia dependendo do modo que você está usando:
   - O servidor carrega automaticamente quando necessário
   - Não precisa digitar na web
 
-**Importante:** O arquivo `.gemini_apikey` está no `.gitignore` e nunca será commitado no Git, mantendo sua chave segura.
+
 
 ---
 
