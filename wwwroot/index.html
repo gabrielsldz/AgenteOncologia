@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise Oncológica IA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-center">
+                <h1 class="header-title">Análise Oncológica IA</h1>
+                <p class="header-subtitle">Dados DATASUS</p>
+            </div>
+            <button class="btn-clear" id="btnClear" title="Limpar conversa">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- API Key Modal -->
+    <div class="modal" id="apiKeyModal">
+        <div class="modal-content">
+            <h2>Configuração da API Key</h2>
+            <p>Para usar a IA, você precisa de uma API Key do Google Gemini (gratuita)</p>
+            <a href="https://aistudio.google.com/" target="_blank" class="link">
+                Obter API Key →
+            </a>
+            <input
+                type="password"
+                id="apiKeyInput"
+                class="input-apikey"
+                placeholder="Cole sua API Key aqui..."
+            />
+            <button class="btn-primary" id="btnSaveApiKey">Salvar e Começar</button>
+        </div>
+    </div>
+
+    <!-- Chat Container -->
+    <main class="chat-container">
+        <!-- Welcome Message -->
+        <div class="welcome" id="welcome">
+            <div class="welcome-content">
+                <h2>👋 Olá! Como posso ajudar?</h2>
+                <p>Faça perguntas sobre dados oncológicos do DATASUS</p>
+
+                <div class="suggestions">
+                    <h3>Sugestões:</h3>
+                    <button class="suggestion-btn" data-text="Quantos casos de câncer de mama em 2021?">
+                        Quantos casos de câncer de mama em 2021?
+                    </button>
+                    <button class="suggestion-btn" data-text="Compare câncer de pulmão entre homens e mulheres">
+                        Compare câncer de pulmão entre homens e mulheres
+                    </button>
+                    <button class="suggestion-btn" data-text="Mostre os 5 tipos de câncer mais comuns no Sudeste">
+                        Mostre os 5 tipos de câncer mais comuns no Sudeste
+                    </button>
+                    <button class="suggestion-btn" data-text="Qual a tendência de câncer de próstata de 2015 a 2023?">
+                        Qual a tendência de câncer de próstata de 2015 a 2023?
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Messages Area -->
+        <div class="messages" id="messages">
+            <!-- Messages will be added here dynamically -->
+        </div>
+
+        <!-- Loading Indicator -->
+        <div class="loading" id="loading" style="display: none;">
+            <div class="loading-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <span class="loading-text">Analisando dados...</span>
+        </div>
+    </main>
+
+    <!-- Input Area -->
+    <footer class="input-container">
+        <div class="input-wrapper">
+            <textarea
+                id="messageInput"
+                class="message-input"
+                placeholder="Digite sua pergunta sobre os dados oncológicos..."
+                rows="1"
+            ></textarea>
+            <button class="btn-send" id="btnSend" title="Enviar mensagem">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                </svg>
+            </button>
+        </div>
+        <div class="input-footer">
+            <span class="footer-text">Pressione Enter para enviar, Shift+Enter para nova linha</span>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
