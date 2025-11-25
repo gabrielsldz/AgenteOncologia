@@ -270,7 +270,22 @@ Banco: casos_oncologicos.db
    http://localhost:5000
    ```
 
-4. **Configure a API Key** na interface web
+4. **Configure a API Key:**
+
+   O servidor **não pergunta** a API key no terminal. Você tem 2 opções:
+
+   **Opção A: Digitar na interface web (recomendado)**
+   - Ao fazer a primeira pergunta, a interface web pedirá sua API key
+   - Digite a chave do Gemini no campo apropriado
+   - A chave será enviada com cada requisição
+
+   **Opção B: Criar arquivo de configuração**
+   - Crie o arquivo `.gemini_apikey` na pasta raiz do projeto:
+     ```bash
+     echo "SUA_API_KEY_AQUI" > .gemini_apikey
+     ```
+   - O servidor carregará automaticamente quando necessário
+   - Não precisa digitar na interface web
 
 5. **Faça perguntas** no chat
 
@@ -283,6 +298,8 @@ GET  /api/health            - Status do sistema
 GET  /api/cache/stats/all   - Estatísticas de cache
 POST /api/cache/clear/all   - Limpar cache
 ```
+
+**Nota:** O servidor inicia normalmente sem a API key. A validação só acontece quando você envia uma mensagem no chat.
 
 ---
 
@@ -339,21 +356,35 @@ ScrapperGranular/
 
 ### Como configurar
 
-**Opção 1: Arquivo local (recomendado)**
+A configuração da API key varia dependendo do modo que você está usando:
 
-Crie um arquivo `.gemini_apikey` na pasta raiz:
+**Para o Modo CLI (ProgramGranular.cs):**
 
-```bash
-echo "SUA_API_KEY_AQUI" > .gemini_apikey
-```
+- **Opção 1:** Informar manualmente quando solicitado
+  - O sistema pergunta a chave na primeira execução
+  - Oferece salvar automaticamente no arquivo `.gemini_apikey`
+  - Nas próximas execuções, carrega automaticamente
 
-**Opção 2: Informar manualmente**
+- **Opção 2:** Criar arquivo manualmente
+  ```bash
+  echo "SUA_API_KEY_AQUI" > .gemini_apikey
+  ```
 
-O sistema pedirá a chave na primeira execução e oferecerá salvar automaticamente.
+**Para a Interface Web (WebProgram.cs):**
 
-**Opção 3: Via interface Web**
+- **Opção 1:** Digitar na interface web (mais simples)
+  - Abra http://localhost:5000 no navegador
+  - Digite a API key quando fizer a primeira pergunta
+  - A chave é enviada com cada requisição
 
-Digite a API key no campo apropriado da interface web.
+- **Opção 2:** Criar arquivo `.gemini_apikey`
+  ```bash
+  echo "SUA_API_KEY_AQUI" > .gemini_apikey
+  ```
+  - O servidor carrega automaticamente quando necessário
+  - Não precisa digitar na web
+
+**Importante:** O arquivo `.gemini_apikey` está no `.gitignore` e nunca será commitado no Git, mantendo sua chave segura.
 
 ---
 
