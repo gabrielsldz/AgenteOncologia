@@ -101,3 +101,9 @@ casos_oncologicos.db
 
 # Node modules (if any)
 node_modules/
+
+# API Keys and secrets
+.gemini_apikey
+*.apikey
+.env
+.env.local
